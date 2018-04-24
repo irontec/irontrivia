@@ -6,7 +6,7 @@ https://opentdb.com/
 
 ### License
 
-[EUPL v1.1](https://github.com/irontec/irontec/blob/master/LICENSE.txt)
+[EUPL v1.1](https://github.com/irontec/irontrivia/blob/master/LICENSE.txt)
 
 ```
 Copyright 2015 Irontec SL
