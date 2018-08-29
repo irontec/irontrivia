@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IronTrivia</string>
+    <string name="categories">Categorías</string>
+    <string name="dificulty">Dificultad</string>
+    <string name="easy">Fácil</string>
+    <string name="medium">Intermedio</string>
+    <string name="hard">Difícil</string>
 </resources>

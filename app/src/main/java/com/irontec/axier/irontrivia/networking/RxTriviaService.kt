@@ -13,17 +13,11 @@ import retrofit2.http.Query
 interface RxTriviaService {
 
     @GET("api.php")
-    fun getQuestionsByCategory(
-            @Query("token") token: String,
-            @Query("amount") amount: Int,
-            @Query("category") category: Int,
-            @Query("difficulty") difficulty: String
-    ): Observable<TriviaGame>
-
-    @GET("api.php")
     fun getQuestions(
             @Query("token") token: String,
+            @Query("type") type: String,
             @Query("amount") amount: Int,
+            @Query("category") category: Int,
             @Query("difficulty") difficulty: String
     ): Observable<TriviaGame>
 
