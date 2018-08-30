@@ -17,7 +17,7 @@ interface RxTriviaService {
             @Query("token") token: String,
             @Query("type") type: String,
             @Query("amount") amount: Int,
-            @Query("category") category: Int,
+            @Query("category") category: Int?,
             @Query("difficulty") difficulty: String
     ): Observable<TriviaGame>
 
