@@ -87,8 +87,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun nextGame(triviaGame: TriviaGame) {
-        if (currentQuestionIndex < 10) {
-            currentQuestionIndex++
+        currentQuestionIndex++
+        if (currentQuestionIndex < triviaGame.questions!!.size) {
             startGame(triviaGame)
         } else {
             currentQuestionIndex = 0
