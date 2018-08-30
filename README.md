@@ -4,6 +4,19 @@
 
 https://opentdb.com/
 
+### Current progress
+
+* Selectable dificulty
+* Selectable categories
+* Wrong & right answers feedback
+
+### Incoming
+
+* Play games integration
+* Points
+* Achivements
+* UI overhaul
+
 ### License
 
 [EUPL v1.1](https://github.com/irontec/irontrivia/blob/master/LICENSE.txt)

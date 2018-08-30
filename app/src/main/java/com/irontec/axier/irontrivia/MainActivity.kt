@@ -16,21 +16,16 @@ import org.jetbrains.anko.uiThread
 import com.afollestad.materialdialogs.MaterialDialog
 import com.irontec.axier.irontrivia.models.TriviaGame
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.os.Build
 import android.os.Handler
 import android.text.Spanned
 import android.view.View
 import org.jetbrains.anko.backgroundColor
-import android.widget.Toast
-
-
-
 
 class MainActivity : AppCompatActivity() {
 
-    var currentQuestionIndex: Int = 0
+    private var currentQuestionIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
