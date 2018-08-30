@@ -19,7 +19,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.os.Build
+import android.os.Handler
 import android.text.Spanned
+import android.view.View
+import org.jetbrains.anko.backgroundColor
+import android.widget.Toast
 
 
 
@@ -57,43 +61,74 @@ class MainActivity : AppCompatActivity() {
         responses.add(question.correctAnswer!!)
         responses.shuffle()
 
+        enableButtons()
+
+        btn1.background = resources.getDrawable(R.drawable.answer_selector)
+        btn2.background = resources.getDrawable(R.drawable.answer_selector)
+        btn3.background = resources.getDrawable(R.drawable.answer_selector)
+        btn4.background = resources.getDrawable(R.drawable.answer_selector)
+
         btn1.text = fromHtml(responses[0])
         btn2.text = fromHtml(responses[1])
         btn3.text = fromHtml(responses[2])
         btn4.text = fromHtml(responses[3])
 
         btn1.onClick {
-            checkAnswer(btn1.text.toString(), question.correctAnswer!!)
+            disableButtons()
+            checkAnswer(btn1.text.toString(), question.correctAnswer!!, btn1)
             nextGame(triviaGame)
         }
         btn2.onClick {
-            checkAnswer(btn2.text.toString(), question.correctAnswer!!)
+            disableButtons()
+            checkAnswer(btn2.text.toString(), question.correctAnswer!!, btn2)
             nextGame(triviaGame)
         }
         btn3.onClick {
-            checkAnswer(btn3.text.toString(), question.correctAnswer!!)
+            disableButtons()
+            checkAnswer(btn3.text.toString(), question.correctAnswer!!, btn3)
             nextGame(triviaGame)
         }
         btn4.onClick {
-            checkAnswer(btn4.text.toString(), question.correctAnswer!!)
+            disableButtons()
+            checkAnswer(btn4.text.toString(), question.correctAnswer!!, btn4)
             nextGame(triviaGame)
         }
     }
 
-    private fun checkAnswer(answeredText: String, correctAnswer: String) {
+    private fun checkAnswer(answeredText: String, correctAnswer: String, button: View) {
         if (answeredText == correctAnswer) {
             //TODO increase points
+            button.backgroundColor = resources.getColor(R.color.green)
+        } else {
+            button.backgroundColor = resources.getColor(R.color.red)
         }
     }
 
     private fun nextGame(triviaGame: TriviaGame) {
-        currentQuestionIndex++
-        if (currentQuestionIndex < triviaGame.questions!!.size) {
-            startGame(triviaGame)
-        } else {
-            currentQuestionIndex = 0
-            doGetTriviaQuestions()
-        }
+        val handler = Handler()
+        handler.postDelayed({
+            currentQuestionIndex++
+            if (currentQuestionIndex < triviaGame.questions!!.size) {
+                startGame(triviaGame)
+            } else {
+                currentQuestionIndex = 0
+                doGetTriviaQuestions()
+            }
+        }, 1500)
+    }
+
+    private fun disableButtons() {
+        btn1.isEnabled = false
+        btn2.isEnabled = false
+        btn3.isEnabled = false
+        btn4.isEnabled = false
+    }
+
+    private fun enableButtons() {
+        btn1.isEnabled = true
+        btn2.isEnabled = true
+        btn3.isEnabled = true
+        btn4.isEnabled = true
     }
 
     private fun showCategories() {
